@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import TextArea from "./TextArea";
 import Welcome from "./Welcome";
+import CreateGroup from "./CreateGroup";
 
 
 const MainContainer = () => {
@@ -27,11 +28,12 @@ const MainContainer = () => {
     ]
     )
     return (
-        <div className="h-[90vh] w-[90vw] mx-auto bg-white flex">
+        <div className="h-[90vh] w-[90vw] mx-auto bg-base-200 flex">
 
             <Sidebar></Sidebar>
             {/* <TextArea props={conversations[0]}></TextArea> */}
-            <Welcome></Welcome>
+            {/* <Welcome></Welcome> */}
+            <CreateGroup></CreateGroup>
         </div>
     );
 };
