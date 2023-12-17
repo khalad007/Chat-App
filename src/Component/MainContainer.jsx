@@ -3,6 +3,8 @@ import Sidebar from "./Sidebar";
 import TextArea from "./TextArea";
 import Welcome from "./Welcome";
 import CreateGroup from "./CreateGroup";
+import Login from "./Login";
+import Users_Group from "./Users_Group";
 
 
 const MainContainer = () => {
@@ -33,7 +35,8 @@ const MainContainer = () => {
             <Sidebar></Sidebar>
             {/* <TextArea props={conversations[0]}></TextArea> */}
             {/* <Welcome></Welcome> */}
-            <CreateGroup></CreateGroup>
+            {/* <CreateGroup></CreateGroup> */}
+            <Users_Group></Users_Group>
         </div>
     );
 };
