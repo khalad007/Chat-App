@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { MdAccountCircle, MdAddCircle, MdGroupAdd, MdNightlight, MdPersonAdd, MdSearch } from "react-icons/md";
 import SingleMessageItem from "./SingleMessageItem";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
     const [conversations, setConversations] = useState([
         {
@@ -35,9 +36,15 @@ const Sidebar = () => {
 
 
                 <div>
-                    <button className='btn btn-xs ml-1'><MdPersonAdd></MdPersonAdd></button>
-                    <button className='btn btn-xs ml-1'><MdGroupAdd></MdGroupAdd></button>
-                    <button className='btn btn-xs ml-1'><MdAddCircle></MdAddCircle></button>
+                    <Link to="users">
+                        <button className='btn btn-xs ml-1'><MdPersonAdd></MdPersonAdd></button>
+                    </Link>
+                    <Link to="groups">
+                        <button className='btn btn-xs ml-1'><MdGroupAdd></MdGroupAdd></button>
+                    </Link>
+                    <Link to="create-group">
+                        <button className='btn btn-xs ml-1'><MdAddCircle></MdAddCircle></button>
+                    </Link>
                     <button className='btn btn-xs ml-1'><MdNightlight></MdNightlight></button>
                 </div>
             </div>
@@ -62,11 +69,11 @@ const Sidebar = () => {
                         </thead> */}
                     <tbody>
                         {/* row 1 */}
-                       {
-                        conversations.map((conversation) =>{
-                            return <SingleMessageItem conversation={conversation} key={conversation.name}></SingleMessageItem>
-                        })
-                       }
+                        {
+                            conversations.map((conversation) => {
+                                return <SingleMessageItem conversation={conversation} key={conversation.name}></SingleMessageItem>
+                            })
+                        }
                     </tbody>
                 </table>
 

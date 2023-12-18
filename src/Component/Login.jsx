@@ -3,7 +3,7 @@
 const Login = () => {
     return (
 
-        <div className="hero bg-base-200 flex-[70%] justify-center items-center">
+        <div className="hero bg-base-200 h-[100vh] flex-[70%] justify-center items-center">
             <div className="hero-content flex-col lg:flex-row ">
 
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

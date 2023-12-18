@@ -2,8 +2,31 @@ import { FaTrashCan } from "react-icons/fa6";
 import { MdSend } from "react-icons/md";
 import OthersMessage from "./OthersMessage";
 import OwnMessage from "./OwnMessage";
+import { useState } from "react";
 
-const TextArea = ({ props }) => {
+const TextArea = () => {
+    const [conversations, setConversations] = useState([
+        {
+            name: 'John Doe',
+            lastMessage: 'Hello there!',
+            timeStamp: new Date().toISOString(),
+            photoURL: "https://i.postimg.cc/MKGy63x2/message.png"
+        },
+        {
+            name: 'Alice Smith',
+            lastMessage: 'How are you?',
+            timeStamp: new Date().toISOString(),
+            photoURL: "https://i.postimg.cc/MKGy63x2/message.png"
+        },
+        {
+            name: 'Bob Johnson',
+            lastMessage: 'Ill be there in 5 minutes.',
+            timeStamp: new Date().toISOString(),
+            photoURL: "https://i.postimg.cc/MKGy63x2/message.png"
+        },
+    ]
+    )
+    var props = conversations[0];
 
     return (
         <div className='bg-base-200 w-[70%] flex flex-col'>
