@@ -1,10 +1,17 @@
 import { useState } from "react";
 // import messageImg from "../assets/message.png"
 
-import { MdAccountCircle, MdAddCircle, MdGroupAdd, MdNightlight, MdPersonAdd, MdSearch } from "react-icons/md";
+import { MdAccountCircle, MdAddCircle, MdGroupAdd, MdNightlight, MdPersonAdd, MdSearch, MdSunny } from "react-icons/md";
 import SingleMessageItem from "./SingleMessageItem";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../Features/themeSlice";
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const lightTheme = useSelector((state) => state.themeKey)
+    // const [lightTheme, setLightTheme] = useState(true);
+    // console.log(useSelector((state) => state.themeKey))
+
     const [conversations, setConversations] = useState([
         {
             name: 'John Doe',
@@ -27,13 +34,13 @@ const Sidebar = () => {
     ]
     )
     return (
-        <div className='bg-base-200 w-[30%] flex flex-col'>
+        <div className={`bg-base-200 w-[30%] flex flex-col ${lightTheme ? '' : 'bg-gray-400'}`}>
             {/* header  */}
-            <div className='bg-white rounded-md py-2 px-1 m-1 flex justify-between'>
+            {/* <div className={`bg-white rounded-md py-2 px-1 m-1 flex justify-between ${lightTheme ? '' : 'bg-gray-400'}`}> */}
+            <div className={`bg-base-100 rounded-md py-2 px-1 m-1 flex justify-between ${lightTheme ? '' : 'bg-gray-400'}`}>
                 <div>
                     <button className='btn btn-xs'><MdAccountCircle></MdAccountCircle></button>
                 </div>
-
 
                 <div>
                     <Link to="users">
@@ -45,18 +52,21 @@ const Sidebar = () => {
                     <Link to="create-group">
                         <button className='btn btn-xs ml-1'><MdAddCircle></MdAddCircle></button>
                     </Link>
-                    <button className='btn btn-xs ml-1'><MdNightlight></MdNightlight></button>
+
+                    <button className='btn btn-xs ml-1' onClick={() => {dispatch(toggleTheme())}}>
+                        {lightTheme ? <MdNightlight /> : <MdSunny />}
+                    </button>
                 </div>
             </div>
 
             {/* search bar  */}
-            <div className='flex items-center bg-white rounded-md py-2 px-1 m-1'>
-                <button className='btn btn-xs bg-white shadow-none outline-none border-none '>
+            <div className={`flex items-center bg-base-100 rounded-md py-2 px-1 m-1 ${lightTheme ? '' : 'bg-gray-400'}`}>
+                <button className='btn btn-xs bg-base-100 shadow-none outline-none border-none '>
                     <MdSearch></MdSearch>
                 </button>
-                <input className='border-none outline-0 ml-3' type="text" placeholder='Search' />
+                <input className='border-none rounded-lg outline-0 ml-3' type="text" placeholder='Search' />
             </div>
-            <div className='bg-white rounded-md py-2 px-1 m-1 flex-1 overflow-x-scroll overflow-y-scroll'>
+            <div className={`bg-base-100  rounded-md py-2 px-1 m-1 flex-1 overflow-x-scroll overflow-y-scroll ${lightTheme ? '' : 'bg-gray-400'}`}>
 
 
                 <table className="table">
