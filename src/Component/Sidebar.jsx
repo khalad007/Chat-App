@@ -34,10 +34,10 @@ const Sidebar = () => {
     ]
     )
     return (
-        <div className={`bg-base-200 w-[30%] flex flex-col ${lightTheme ? '' : 'bg-gray-400'}`}>
+        <div className={`bg-base-200 w-[30%] flex flex-col ${lightTheme ? '' : 'bg-gray-400'} hole-sidebar`}>
             {/* header  */}
             {/* <div className={`bg-white rounded-md py-2 px-1 m-1 flex justify-between ${lightTheme ? '' : 'bg-gray-400'}`}> */}
-            <div className={`bg-base-100 rounded-md py-2 px-1 m-1 flex justify-between ${lightTheme ? '' : 'bg-gray-400'}`}>
+            <div className={`bg-base-100 rounded-md py-2 px-1 m-1 flex justify-between ${lightTheme ? '' : 'bg-gray-400'} header-section`}>
                 <div>
                     <button className='btn btn-xs'><MdAccountCircle></MdAccountCircle></button>
                 </div>
@@ -53,20 +53,43 @@ const Sidebar = () => {
                         <button className='btn btn-xs ml-1'><MdAddCircle></MdAddCircle></button>
                     </Link>
 
-                    <button className='btn btn-xs ml-1' onClick={() => {dispatch(toggleTheme())}}>
+                    <button className='btn btn-xs ml-1' onClick={() => { dispatch(toggleTheme()) }}>
                         {lightTheme ? <MdNightlight /> : <MdSunny />}
                     </button>
                 </div>
             </div>
 
             {/* search bar  */}
-            <div className={`flex items-center bg-base-100 rounded-md py-2 px-1 m-1 ${lightTheme ? '' : 'bg-gray-400'}`}>
+            <div className={`flex items-center bg-base-100 rounded-md py-2 px-1 m-1 ${lightTheme ? '' : 'bg-gray-400'} conversation-list`}>
                 <button className='btn btn-xs bg-base-100 shadow-none outline-none border-none '>
                     <MdSearch></MdSearch>
                 </button>
                 <input className='border-none rounded-lg outline-0 ml-3' type="text" placeholder='Search' />
             </div>
-            <div className={`bg-base-100  rounded-md py-2 px-1 m-1 flex-1 overflow-x-scroll overflow-y-scroll ${lightTheme ? '' : 'bg-gray-400'}`}>
+
+
+            <style>
+                {`
+                    @media (max-width: 640px) {
+                        .conversation-list {
+                            display: none;
+                        }
+                        .header-section {
+                            height: 100%;
+                            
+                            flex-direction: column;
+                            justify-content: flex-evenly;
+                        }
+                        .hole-sidebar {
+                            width: min-content;
+                        }
+                       
+                    }
+                `}
+            </style>
+
+            {/* conversation section  */}
+            <div className={`bg-base-100  rounded-md py-2 px-1 m-1 flex-1 overflow-x-scroll overflow-y-scroll ${lightTheme ? '' : 'bg-gray-400'} conversation-list`}>
 
 
                 <table className="table">
